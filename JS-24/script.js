@@ -5,10 +5,9 @@
 const calcAge = function (birthYear) {
   return 2022 - birthYear;
 };
-console.log(calcAge(1990));
 
 const yearsToRetire = function (birthYear, firstName) {
-  const currentAge = 2022 - birthYear;
+  const currentAge = calcAge(birthYear);
   const retirement = 65 - currentAge;
 
   if (retirement > 0) {
