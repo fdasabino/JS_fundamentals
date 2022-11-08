@@ -21,7 +21,16 @@ console.log(popped);
 
 // ? remove the first element from the array
 friends.shift();
-console.log(friends);
-
 const shifted = friends.shift();
+console.log(friends);
 console.log(shifted);
+
+// ? returns the index number of the element
+console.log(friends.indexOf("Steven"));
+
+// ? returns a boolean value
+console.log(friends.includes("Steven"));
+
+if (friends.includes("Steven")) {
+  console.log(`You have a friend called Steven`);
+}
