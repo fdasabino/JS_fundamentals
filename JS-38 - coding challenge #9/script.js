@@ -27,11 +27,11 @@ const calcTempAmplitude = (temps) => {
     if (curTemp > max) max = curTemp;
     if (curTemp < min) min = curTemp;
   }
-  console.log(max, min);
+  console.log({ max }, { min });
   return max - min;
 };
 const amplitude = calcTempAmplitude(temperatures);
-console.log(amplitude);
+console.log({ amplitude });
 
 // ! Problem 2
 // Function should now receive 2 arrays of temps
@@ -42,7 +42,7 @@ console.log(amplitude);
 const calcTempAmplitudeNew = (t1, t2) => {
   const temps = t1.concat(t2);
 
-  console.log(temps);
+  console.log({ temps });
 
   let max = temps[0];
   let min = temps[0];
@@ -53,8 +53,8 @@ const calcTempAmplitudeNew = (t1, t2) => {
     if (curTemp > max) max = curTemp;
     if (curTemp < min) min = curTemp;
   }
-  console.log(max, min);
+  console.log({ max }, { min });
   return max - min;
 };
 const amplitudeNew = calcTempAmplitudeNew([3, 5, 1], [9, 0, 5]);
-console.log(amplitudeNew);
+console.log({ amplitudeNew });
