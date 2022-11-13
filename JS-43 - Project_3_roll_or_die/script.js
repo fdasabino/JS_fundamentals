@@ -1,6 +1,6 @@
 "use strict";
 
-// Selecting elements
+// * Selecting elements
 const player0Element = document.querySelector(".player--0");
 const player1Element = document.querySelector(".player--1");
 const score0Element = document.querySelector("#score--0");
@@ -16,10 +16,10 @@ const btnHold = document.querySelector(".btn--hold");
 let scores;
 let currentScore;
 let activePlayer;
-let playing;
+let playing = true;
 
-// Starting conditions
-const init = () => {
+// * Starting conditions
+const initialGame = () => {
   scores = [0, 0];
   currentScore = 0;
   activePlayer = 0;
@@ -36,8 +36,9 @@ const init = () => {
   player0Element.classList.add("player--active");
   player1Element.classList.remove("player--active");
 };
-init();
+initialGame();
 
+// * Switching player function
 const switchPlayer = () => {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
   currentScore = 0;
@@ -46,7 +47,7 @@ const switchPlayer = () => {
   player1Element.classList.toggle("player--active");
 };
 
-// Rolling dice functionality
+// * Rolling dice functionality
 btnRoll.addEventListener("click", () => {
   if (playing) {
     // 1. Generating a random dice roll
@@ -69,24 +70,29 @@ btnRoll.addEventListener("click", () => {
   }
 });
 
+// * Holding the currentScore
 btnHold.addEventListener("click", () => {
   if (playing) {
     // 1. Add current score to active player's score
     scores[activePlayer] += currentScore;
-    // scores[1] = scores[1] + currentScore
 
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
 
     // 2. Check if player's score is >= 100
     if (scores[activePlayer] >= 100) {
-      // Finish the game
+      // Finish the game and hide the dice and game buttons
       playing = false;
       diceElement.classList.add("hidden");
+      btnRoll.classList.add("hidden");
+      btnHold.classList.add("hidden");
 
+      // Add the winner player class
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add("player--winner");
+
+      // remove the active player
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.remove("player--active");
@@ -97,4 +103,4 @@ btnHold.addEventListener("click", () => {
   }
 });
 
-btnNewGame.addEventListener("click", init);
+btnNewGame.addEventListener("click", initialGame);
