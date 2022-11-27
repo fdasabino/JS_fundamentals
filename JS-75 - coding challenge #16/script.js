@@ -62,4 +62,4 @@ const button = document.querySelector(".poll");
 button.addEventListener("click", poll.registerNewAnswer.bind(poll));
 
 // poll.displayResults.call({ answers: [5, 2, 3] });
-// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] });
+// poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, "string");
