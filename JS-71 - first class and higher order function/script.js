@@ -1,33 +1,29 @@
 "use strict";
 
-// * First-Class and Higher-Order Functions // Functions Accepting Callback Functions
+// * How passing arguments works?
 
-// ? JS treats functions as first class citizens, meaning functions are simply
-// ? values. In another words functions are just another "type" of obj.
-
-const oneWord = (str) => {
-  return str.replace(/ /g, "").toLowerCase();
+const flight = "LH666";
+const passenger = {
+  name: "Frank Sabino",
+  passport: 1588549874,
 };
 
-const upperFirstWord = (str) => {
-  const [first, ...others] = str.split(" ");
-  return [first.toUpperCase(), ...others].join(" ");
+const checkIn = (flightNum = flight, passengerDetails) => {
+  console.log(flightNum);
+  console.log((passengerDetails.name = "MR " + passenger.name));
+
+  if (passenger.passport === 1588549874) {
+    console.log("You're now Checked in");
+  } else {
+    console.log("Wrong Passport number");
+  }
 };
 
-//* Higher order function
-const transformer = (str, fn) => {
-  console.log(`Original string: ${str}`);
-  console.log(`Transformed string: ${fn(str)}`);
-  console.log(`Transformed by: ${fn.name}`);
+checkIn(flight, passenger);
+
+// another function manipulating the same obj
+const newPassport = (person) => {
+  console.log((person.passport = Math.trunc(Math.random() * 100000000)));
 };
-
-transformer("JavaScript is the best", upperFirstWord);
-transformer("JavaScript is the best", oneWord);
-
-// Callback functions, allow us to create abstraction.
-const high5 = () => {
-  console.log("👋👋👋");
-};
-
-document.body.addEventListener("click", high5);
-["Frank", "Kevin", "Ester"].forEach(high5);
+newPassport(passenger);
+checkIn(flight, passenger);
