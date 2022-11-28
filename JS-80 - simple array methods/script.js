@@ -2,14 +2,6 @@
 
 // * Simple array methods
 
-// const currencies = new Map([
-//   ["USD", "United States Dollar"],
-//   ["EUR", "Euro"],
-//   ["GBP", "Pound Sterling"],
-// ]);
-
-// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
 // ? Slice method => Creates a new array without mutating the original array.
 
 let arr = [1, 2, 3, 4, 5];
