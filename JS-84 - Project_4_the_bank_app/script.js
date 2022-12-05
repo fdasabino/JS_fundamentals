@@ -63,4 +63,40 @@ const currencies = new Map([
   ["GBP", "Pound sterling"],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const displayMovements = (movements) => {
+  console.log(movements);
+  containerMovements.innerHTML = ""; // manipulating the DOM by overwriting the HTML that exists
+
+  movements.forEach((movement, index) => {
+    const type = movement > 0 ? "deposit" : "withdrawal";
+    const html = `
+    <div class="movements__row">
+    <div class="movements__type movements__type--${type}">${
+      index + 1
+    } ${type}</div>
+    <div class="movements__date">3 days ago</div>
+    <div class="movements__value">${movement}€</div>
+  </div>`;
+    // attaches element to the DOM  https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+    containerMovements.insertAdjacentHTML("afterbegin", html);
+  });
+};
+
+displayMovements(account1.movements);
+
+const user = "Steven Thomas Williams"; // stw
+
+// loops through the array and returns the first letter of each array element
+const createUserNames = (userAcc) => {
+  userAcc.forEach((acc) => {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word[0])
+      .join("");
+    // console.log(acc.username);
+  });
+};
+
+createUserNames(accounts);
+console.log(accounts);
