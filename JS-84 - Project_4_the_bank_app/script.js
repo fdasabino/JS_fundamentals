@@ -94,6 +94,45 @@ const calculateAndDisplayBalances = (movements) => {
 };
 calculateAndDisplayBalances(account1.movements);
 
+// display summaries
+const calcAndDisplaySummary = (movements) => {
+  const incomes = movements
+    .filter((movement) => {
+      return movement > 0;
+    })
+    .reduce((accumulator, movement) => {
+      return accumulator + movement;
+    }, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const expenses = movements
+    .filter((movement) => {
+      return movement < 0;
+    })
+    .reduce((accumulator, movement) => {
+      return accumulator + movement;
+    });
+  labelSumOut.textContent = `${Math.abs(expenses)}€`;
+
+  const interestRate = movements
+    .filter((movement) => {
+      return movement > 0;
+    })
+    .map((deposit) => {
+      return (deposit * 1.2) / 100;
+    })
+    .filter((interest, i, arr) => {
+      console.log(arr);
+      return interest >= 1;
+    })
+    .reduce((accumulator, interest) => {
+      return accumulator + interest;
+    }, 0);
+
+  labelSumInterest.textContent = `${interestRate}€`;
+};
+calcAndDisplaySummary(account1.movements);
+
 // loops through the array and returns the first letter of each array element
 const user = "Steven Thomas Williams"; // stw
 const createUserNames = (userAcc) => {
