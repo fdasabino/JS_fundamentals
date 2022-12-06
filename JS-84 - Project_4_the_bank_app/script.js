@@ -63,6 +63,7 @@ const currencies = new Map([
   ["GBP", "Pound sterling"],
 ]);
 
+// display movements
 const displayMovements = (movements) => {
   console.log(movements);
   containerMovements.innerHTML = ""; // manipulating the DOM by overwriting the HTML that exists
@@ -81,12 +82,20 @@ const displayMovements = (movements) => {
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 };
-
 displayMovements(account1.movements);
 
-const user = "Steven Thomas Williams"; // stw
+// display balances
+const calculateAndDisplayBalances = (movements) => {
+  const balance = movements.reduce((accumulator, movement) => {
+    return accumulator + movement;
+  }, 0);
+
+  labelBalance.textContent = `${balance}€`;
+};
+calculateAndDisplayBalances(account1.movements);
 
 // loops through the array and returns the first letter of each array element
+const user = "Steven Thomas Williams"; // stw
 const createUserNames = (userAcc) => {
   userAcc.forEach((acc) => {
     acc.username = acc.owner
@@ -99,4 +108,3 @@ const createUserNames = (userAcc) => {
 };
 
 createUserNames(accounts);
-console.log(accounts);
