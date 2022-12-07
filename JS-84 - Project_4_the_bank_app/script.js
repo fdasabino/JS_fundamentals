@@ -64,11 +64,15 @@ const currencies = new Map([
 ]);
 
 // display movements
-const displayMovements = (movements) => {
-  console.log(movements);
+const displayMovements = (movements, sort = false) => {
   containerMovements.innerHTML = ""; // manipulating the DOM by overwriting the HTML that exists
 
-  movements.forEach((movement, index) => {
+  // sorting the movements by ascending or descending
+  const sortedMovements = sort
+    ? movements.slice().sort((a, b) => a - b)
+    : movements;
+
+  sortedMovements.forEach((movement, index) => {
     const type = movement > 0 ? "deposit" : "withdrawal";
     const html = `
     <div class="movements__row">
@@ -257,4 +261,12 @@ btnClose.addEventListener("click", (event) => {
     // welcome message update
     labelWelcome.textContent = "Log in to get started";
   }
+});
+
+// sort transactions
+let sorted = false;
+btnSort.addEventListener("click", (event) => {
+  event.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
