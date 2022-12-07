@@ -154,6 +154,7 @@ const updateUI = (currentAccount) => {
 // Event handlers
 let currentAccount;
 
+// handle login
 btnLogin.addEventListener("click", (event) => {
   event.preventDefault();
   currentAccount = accounts.find(
@@ -180,6 +181,7 @@ btnLogin.addEventListener("click", (event) => {
   }
 });
 
+// handle transfer funds
 btnTransfer.addEventListener("click", (event) => {
   event.preventDefault();
   const amount = Number(inputTransferAmount.value);
@@ -207,7 +209,7 @@ btnTransfer.addEventListener("click", (event) => {
   }
 });
 
-// delete account
+// handle delete account
 btnClose.addEventListener("click", (event) => {
   event.preventDefault();
 
