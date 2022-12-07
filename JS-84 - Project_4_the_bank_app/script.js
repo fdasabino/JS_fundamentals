@@ -206,3 +206,31 @@ btnTransfer.addEventListener("click", (event) => {
     throw new Error("Something went wrong");
   }
 });
+
+// delete account
+btnClose.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  // check if account exists and find it's index number
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex((acc) => {
+      return acc.username === currentAccount.username;
+    });
+
+    // empty input fields
+    inputCloseUsername.value = "";
+    inputClosePin.value = "";
+
+    // delete found account
+    accounts.splice(index, 1);
+
+    // hide UI
+    containerApp.style.opacity = 0;
+
+    // welcome message update
+    labelWelcome.textContent = "Log in to get started";
+  }
+});
