@@ -76,22 +76,30 @@ const currencies = new Map([
 ]);
 
 // display movements
-const displayMovements = (movements, sort = false) => {
+const displayMovements = (acc, sort = false) => {
   containerMovements.innerHTML = ""; // manipulating the DOM by overwriting the HTML that exists
 
   // sorting the movements by ascending or descending
   const sortedMovements = sort
-    ? movements.slice().sort((a, b) => a - b)
-    : movements;
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
 
   sortedMovements.forEach((movement, index) => {
     const type = movement > 0 ? "deposit" : "withdrawal";
+    const date = new Date(acc.movementsDates[index]);
+
+    const day = `${date.getDate()}`.padStart(2, 0);
+    const month = `${date.getMonth() + 1}`.padStart(2, 0);
+    const year = date.getFullYear();
+
+    const displayDate = `${day}/${month}/${year}`;
+
     const html = `
     <div class="movements__row">
     <div class="movements__type movements__type--${type}">${
       index + 1
     } ${type}</div>
-    <div class="movements__date">3 days ago</div>
+    <div class="movements__date">${displayDate}</div>
     <div class="movements__value">${movement.toFixed(2)}€</div>
   </div>`;
     // attaches element to the DOM  https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
@@ -160,7 +168,7 @@ createUserNames(accounts);
 
 const updateUI = (currentAccount) => {
   // Display movements
-  displayMovements(currentAccount.movements);
+  displayMovements(currentAccount);
   // Display balance
   calculateAndDisplayBalances(currentAccount);
   // Display summary
@@ -184,6 +192,17 @@ btnLogin.addEventListener("click", (event) => {
       currentAccount.owner.split(" ")[0]
     }`;
     containerApp.style.opacity = 100;
+
+    // create current date
+    const now = new Date();
+    const day = `${now.getDate()}`.padStart(2, 0);
+    const month = `${now.getMonth() + 1}`.padStart(2, 0);
+    const year = now.getFullYear();
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+
+    const time = `${day}/${month}/${year} - ${hour}:${minute}`;
+    labelDate.textContent = time;
 
     // clear input fields
     inputLoginUsername.value = "";
@@ -210,6 +229,9 @@ btnLoan.addEventListener("click", (event) => {
 
     // add movement
     currentAccount.movements.push(loanAmount);
+
+    // add load date
+    currentAccount.movementsDates.push(new Date().toISOString());
 
     // update UI
     updateUI(currentAccount);
@@ -239,6 +261,10 @@ btnTransfer.addEventListener("click", (event) => {
     // Transfer funds
     currentAccount.movements.push(-amount);
     receiverAccount.movements.push(amount);
+
+    // add transfer date
+    currentAccount.movementsDates.push(new Date().toISOString());
+    receiverAccount.movementsDates.push(new Date().toISOString());
 
     // update UI
     updateUI(currentAccount);
@@ -279,6 +305,6 @@ btnClose.addEventListener("click", (event) => {
 let sorted = false;
 btnSort.addEventListener("click", (event) => {
   event.preventDefault();
-  displayMovements(currentAccount.movements, !sorted);
+  displayMovements(currentAccount, !sorted);
   sorted = !sorted;
 });
