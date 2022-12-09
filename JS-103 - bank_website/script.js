@@ -13,7 +13,7 @@ const header = document.querySelector(".header");
 const tabsContainer = document.querySelector(".operations__tab-container");
 const tabs = document.querySelectorAll(".operations__tab");
 const tabsContent = document.querySelectorAll(".operations__content");
-
+const allSections = document.querySelectorAll(".section");
 // Functions
 const openModal = (event) => {
   event.preventDefault();
@@ -116,7 +116,7 @@ const stickyOptions = {
 
 const stickyNavCallback = (entries) => {
   const [entry] = entries;
-  console.log(entry);
+  // console.log(entry);
 
   // check if target element is intersecting with the DOM RECT
   if (!entry.isIntersecting) {
@@ -128,3 +128,31 @@ const stickyNavCallback = (entries) => {
 
 const headerObs = new IntersectionObserver(stickyNavCallback, stickyOptions);
 headerObs.observe(header);
+
+// Reveal sections
+
+const revealSectionCallback = (entries, observer) => {
+  const [entry] = entries;
+  // console.log(entry);
+
+  if (!entry.isIntersecting) return;
+
+  if (entry.isIntersecting) {
+    entry.target.classList.remove("section--hidden");
+    observer.unobserve(entry.target);
+  }
+};
+const revealSectionOptions = {
+  root: null,
+  threshold: 0.15,
+};
+
+const sectionObserver = new IntersectionObserver(
+  revealSectionCallback,
+  revealSectionOptions
+);
+
+allSections.forEach((section) => {
+  sectionObserver.observe(section);
+  section.classList.add("section--hidden");
+});
