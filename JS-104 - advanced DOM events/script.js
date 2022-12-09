@@ -2,7 +2,7 @@
 
 // * JS-104 - Selecting, Creating, and Deleting Elements
 
-// Selecting elements
+// * Selecting elements
 console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
@@ -17,7 +17,7 @@ console.log(document.getElementsByTagName("section"));
 const header = document.querySelector(".header");
 console.log(header);
 
-// Creating and inserting elements
+// * Creating and inserting elements
 const messageContainer = document.createElement("div");
 messageContainer.classList.add("cookie-message");
 messageContainer.innerHTML =
@@ -25,13 +25,13 @@ messageContainer.innerHTML =
 
 header.insertAdjacentElement("afterend", messageContainer);
 
-// delete elements from the DOM
+// * delete elements from the DOM
 const buttonCookie = document.querySelector(".btn--close-cookie");
 buttonCookie.addEventListener("click", () => {
   messageContainer.remove();
 });
 
-// Old way
+// * Old way
 // scrolling
 // window.scrollTo(
 //   section1Coords.left + window.pageXOffset,
@@ -73,7 +73,7 @@ buttonCookie.addEventListener("click", () => {
 // });
 
 ///////////////////////////////////////
-// DOM Traversing
+// * DOM Traversing
 // const h1 = document.querySelector('h1');
 
 // Going downwards: child
@@ -101,4 +101,15 @@ buttonCookie.addEventListener("click", () => {
 // console.log(h1.parentElement.children);
 // [...h1.parentElement.children].forEach(function (el) {
 //   if (el !== h1) el.style.transform = 'scale(0.5)';
+// });
+
+// * sticky navigation
+// const initialCoords = section1.getBoundingClientRect();
+
+// window.addEventListener("scroll", (e) => {
+//   if (window.scrollY > initialCoords.top) {
+//     nav.classList.add("sticky");
+//   } else {
+//     nav.classList.remove("sticky");
+//   }
 // });
