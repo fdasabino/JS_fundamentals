@@ -20,13 +20,28 @@
   box-sizing: inherit;
 }
 
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+textarea,
+button,
+select {
+  font: inherit;
+}
+
 html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   color: #444;
   line-height: 1.9;
@@ -216,7 +231,7 @@ h4 {
 
 .highlight::after {
   display: block;
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -470,7 +485,7 @@ h4 {
 }
 
 .testimonial::before {
-  content: '\201C';
+  content: "\201C";
   position: absolute;
   top: -5.7rem;
   left: -6.8rem;
