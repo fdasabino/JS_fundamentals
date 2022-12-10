@@ -104,12 +104,32 @@ buttonCookie.addEventListener("click", () => {
 // });
 
 // * sticky navigation
-// const initialCoords = section1.getBoundingClientRect();
 
+// const initialCoords = section1.getBoundingClientRect();
 // window.addEventListener("scroll", (e) => {
 //   if (window.scrollY > initialCoords.top) {
 //     nav.classList.add("sticky");
 //   } else {
 //     nav.classList.remove("sticky");
 //   }
+// });
+
+// * Dom Events
+
+// document.addEventListener("DOMContentLoaded", (e) => {
+//   console.log("Html parsed", e);
+// });
+
+// * window event
+
+// window.addEventListener("load", (e) => {
+//   console.log("Page fully loaded", e);
+// });
+
+//! display a message to the user warning about leaving the page
+
+// window.addEventListener("beforeunload", (e) => {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = "";
 // });

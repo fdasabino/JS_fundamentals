@@ -14,6 +14,13 @@ const tabsContainer = document.querySelector(".operations__tab-container");
 const tabs = document.querySelectorAll(".operations__tab");
 const tabsContent = document.querySelectorAll(".operations__content");
 const allSections = document.querySelectorAll(".section");
+const imgTargets = document.querySelectorAll("img[data-src]");
+const slider = document.querySelector(".slider");
+const slides = document.querySelectorAll(".slide");
+const btnLeft = document.querySelector(".slider__btn--left");
+const btnRight = document.querySelector(".slider__btn--right");
+const dotsContainer = document.querySelector(".dots");
+
 // Functions
 const openModal = (event) => {
   event.preventDefault();
@@ -156,3 +163,115 @@ allSections.forEach((section) => {
   sectionObserver.observe(section);
   section.classList.add("section--hidden");
 });
+
+// Lazy load images
+const loadImgs = (entries, observer) => {
+  const [entry] = entries;
+  // console.log(entry);
+  if (!entry.isIntersecting) return;
+
+  // replace the src with data-src
+  if (entry.isIntersecting) {
+    entry.target.src = entry.target.dataset.src;
+    entry.target.addEventListener("load", (e) => {
+      entry.target.classList.remove("lazy-img");
+    });
+  }
+  observer.unobserve(entry.target);
+};
+
+const loadImgOptions = {
+  root: null,
+  threshold: 0,
+  rootMargin: "-300px",
+};
+
+const imgObserver = new IntersectionObserver(loadImgs, loadImgOptions);
+
+imgTargets.forEach((img) => {
+  return imgObserver.observe(img);
+});
+
+// Slider component
+const sliderFunc = () => {
+  let currentSlide = 0;
+  const maxSlide = slides.length - 1;
+
+  // functions
+  // create dot indicator
+  const createDots = () => {
+    slides.forEach((_, index) => {
+      dotsContainer.insertAdjacentHTML(
+        "beforeend",
+        `<button class="dots__dot" data-slide="${index}"></button>`
+      );
+    });
+  };
+
+  // active slide indicator
+  const activeDot = (slide) => {
+    document.querySelectorAll(".dots__dot").forEach((dot) => {
+      dot.classList.remove("dots__dot--active");
+    });
+
+    document
+      .querySelector(`.dots__dot[data-slide="${slide}"]`)
+      .classList.add("dots__dot--active");
+  };
+
+  const goToSlide = (currentSlide) => {
+    slides.forEach((slide, index) => {
+      slide.style.transform = `translateX(${100 * (index - currentSlide)}%)`;
+    });
+  };
+
+  //next slide
+  const nextSlide = () => {
+    if (currentSlide === maxSlide) {
+      currentSlide = 0;
+    } else {
+      currentSlide++;
+    }
+    goToSlide(currentSlide);
+    activeDot(currentSlide);
+  };
+
+  //previous slide
+  const previousSlide = () => {
+    if (currentSlide === 0) {
+      currentSlide = maxSlide;
+    } else {
+      currentSlide--;
+    }
+    goToSlide(currentSlide);
+    activeDot(currentSlide);
+  };
+
+  // event handlers
+  btnRight.addEventListener("click", nextSlide);
+  btnLeft.addEventListener("click", previousSlide);
+  document.addEventListener("keydown", (e) => {
+    // console.log(e);
+    e.key === "ArrowLeft" && previousSlide();
+    e.key === "ArrowRight" && nextSlide();
+  });
+
+  dotsContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("dots__dot")) {
+      const { slide } = e.target.dataset;
+      goToSlide(slide);
+      activeDot(slide);
+    }
+  });
+
+  // initial state
+  const initialSliderState = () => {
+    createDots();
+    goToSlide(0);
+    activeDot(0);
+  };
+
+  initialSliderState();
+};
+
+sliderFunc();
