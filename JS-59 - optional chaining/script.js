@@ -57,7 +57,7 @@ const restaurant = {
   },
 };
 
-// * optional chaining checks if a property exists, if it doesnt returns undefined
+// * optional chaining checks if a property exists, if it doesn't returns undefined
 console.log(restaurant?.openingHours?.mon?.open);
 
 for (const day of weekdays) {
