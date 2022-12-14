@@ -59,7 +59,7 @@ const { sat, ...weekDays } = restaurant.openingHours;
 console.table(sat);
 console.table(weekDays);
 
-// * 2 - functions - Rest syntax takes all arguments passed into a funtion a packs them to an array
+// * 2 - functions - Rest syntax takes all arguments passed into a function a packs them to an array
 const add = function (...numbers) {
   let sum = 0;
   for (let i = 0; i < numbers.length; i++) {
