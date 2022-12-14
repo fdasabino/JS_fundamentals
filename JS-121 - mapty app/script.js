@@ -29,17 +29,32 @@ if (navigator.geolocation) {
       const { latitude } = position.coords;
       const { longitude } = position.coords;
       const coords = [latitude, longitude];
-      const map = L.map("map").setView(coords, 13);
 
-      L.tileLayer("https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png", {
+      // Leaflet code
+      const map = L.map("map").setView(coords, 13);
+      L.tileLayer("https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png", {
         attribution:
-          '&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      L.marker(coords)
-        .addTo(map)
-        .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
-        .openPopup();
+      map.on("click", (mapEvent) => {
+        console.log(mapEvent);
+        const { lat, lng } = mapEvent.latlng;
+
+        const options = {
+          maxWidth: 250,
+          minWidth: 100,
+          autoClose: false,
+          closeOnClick: false,
+          className: "running-popup",
+        };
+
+        L.marker([lat, lng])
+          .addTo(map)
+          .bindPopup(L.popup(options))
+          .setPopupContent("Workout")
+          .openPopup();
+      });
     },
     () => {
       console.log("Could not get your position");
