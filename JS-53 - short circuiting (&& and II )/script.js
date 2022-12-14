@@ -3,7 +3,7 @@
 // *  Short Circuiting (&& and ||)
 // ? Use any data type
 // ? Return any data type
-// ? Short Circuitig evaluation
+// ? Short Circuiting evaluation
 
 // and &&
 console.log("&& ", 0 && "jonas");
