@@ -28,22 +28,30 @@ const renderError = function (errorMsg) {
   // countriesContainer.style.opacity = 1;
 };
 
+const getJson = function (url, errorMsg = "Something went wrong") {
+  return fetch(url).then((response) => {
+    if (!response.ok) {
+      throw new Error(`${errorMsg} (${response.status})`);
+    }
+    return response.json();
+  });
+};
+
 const getCountryData = function (country) {
   const URL = `https://restcountries.com/v2/name/${country}`;
+
   // Country 1
-  fetch(URL)
-    .then((response) => response.json())
+  return getJson(URL, "Country not found")
     .then((data) => {
       renderCountry(data[0]);
-      const neighbor = data[0].borders?.[0];
-      const URL2 = `https://restcountries.com/v2/alpha/${neighbor}`;
-      if (!neighbor) return;
 
       // Country 2
-      return fetch(URL2);
+      const neighbor = data[0].borders?.[0];
+      const URL2 = `https://restcountries.com/v2/alpha/${neighbor}`;
+      if (!neighbor) throw new Error("No neighbour found");
+      return getJson(URL2, "Country not found");
     })
-    .then((response2) => response2.json())
-    .then((data2) => renderCountry(data2, "neighbour"))
+    .then((data) => renderCountry(data, "neighbour"))
     .catch((err) => {
       console.error(`${err} 💥💥💥`);
       renderError(`Something went wrong: ${err.message}`);
@@ -53,5 +61,5 @@ const getCountryData = function (country) {
     });
 };
 btn.addEventListener("click", () => {
-  getCountryData("italy");
+  getCountryData("brazil");
 });
