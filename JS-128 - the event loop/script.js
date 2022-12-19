@@ -1,6 +1,6 @@
 "use strict";
 
-// * 126 - The event loop in practice
+// * 128 - The event loop in practice
 
 //  JavaScript has a runtime model based on an event loop, which is responsible for executing the code,
 //  collecting and processing events, and executing queued sub-tasks.

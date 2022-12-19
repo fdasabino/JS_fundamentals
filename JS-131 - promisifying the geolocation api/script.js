@@ -1,6 +1,6 @@
 "use strict";
 
-// * 128 -  Promisifying the Geolocation API
+// * 131 -  Promisifying the Geolocation API
 
 const getJson = function (url, errorMsg = "Something went wrong") {
   return fetch(url).then((response) => {

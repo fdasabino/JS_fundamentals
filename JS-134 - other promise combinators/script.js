@@ -1,6 +1,6 @@
 "use strict";
 
-// * 133 - Other Promise Combinators: race, allSettled and any
+// * 134 - Other Promise Combinators: race, allSettled and any
 
 const getJson = function (url, errorMsg = "Something went wrong") {
   return fetch(url).then((response) => {

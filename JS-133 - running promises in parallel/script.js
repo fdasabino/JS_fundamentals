@@ -1,6 +1,6 @@
 "use strict";
 
-// * 132 - Running promises in parallel
+// * 133 - Running promises in parallel
 
 const getJson = function (url, errorMsg = "Something went wrong") {
   return fetch(url).then((response) => {
