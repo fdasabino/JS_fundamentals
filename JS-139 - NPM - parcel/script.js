@@ -17,7 +17,7 @@ console.log(stateClone);
 
 console.log(cloneDeepState);
 
-////parcel configuration////
+//// parcel config ////
 if (module.hot) {
   module.hot.accept();
 }
