@@ -58,6 +58,15 @@ export const getSearchResultsPage = function (page = state.search.page) {
 
   return state.search.results.slice(start, end);
 };
+
+export const updateServings = function (newServings) {
+  state.recipe.ingredients.forEach((ing) => {
+    //// new qty = oldQty * newServings / oldServings
+    ing.quantity = (ing.quantity * newServings) / state.recipe.servings;
+  });
+  //// update state
+  state.recipe.servings = newServings;
+};
 // f926b802-a866-48a4-9cac-6b9ddeecced4
 // https://forkify-api.herokuapp.com/v2
 // https://forkify-api.herokuapp.com/api/v2/recipes/:id
