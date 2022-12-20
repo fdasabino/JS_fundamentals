@@ -28,7 +28,6 @@ const controlSearchResults = async function () {
   try {
     //// render spinner
     resultsView.renderSpinner();
-    console.log(resultsView);
 
     //// get search query
     const query = searchView.getQuery();
@@ -38,7 +37,7 @@ const controlSearchResults = async function () {
     await model.loadSearchResults(query);
 
     //// render results
-    resultsView.render(model.state.search.results);
+    resultsView.render(model.getSearchResultsPage());
   } catch (error) {
     console.error(error);
   }
