@@ -1,33 +1,14 @@
-import View from "./View";
-import icons from "url:../../img/icons.svg";
+import PreviewView from "./previewView";
 
-class ResultsView extends View {
-  _parentElement = document.querySelector(".results");
-  _errorMessage = "No recipes found for your query. Please try again!";
-  _successMessage;
+class ResultsView extends PreviewView {
+  _parentElement = document.querySelector(".search-results .results");
+  _errorMsg = "No recipes found for your query! Please try again ;)";
+  _msg = "";
 
   _generateMarkup() {
-    return this._data.map(this._generateMarkupPreview).join("");
-  }
-  _generateMarkupPreview(result) {
-    const id = window.location.hash.slice(1);
-
-    return `
-    <li class="preview">
-        <a class="preview__link ${
-          result.id === id ? `preview__link--active` : ""
-        }" href="#${result.id}">
-        <figure class="preview__fig">
-            <img src="${result.imageUrl}" alt="${result.title}" />
-        </figure>
-        <div class="preview__data">
-            <h4 class="preview__name">
-            ${result.title}
-            </h4>
-        <p class="preview__publisher">${result.publisher}</p>
-        </div>
-        </a>
-    </li>`;
+    return this._data
+      .map((result) => this._generateMarkupPreview(result))
+      .join("");
   }
 }
 
