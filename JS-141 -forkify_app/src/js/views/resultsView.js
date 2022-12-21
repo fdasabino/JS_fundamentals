@@ -1,12 +1,14 @@
-import PreviewView from "./previewView";
+import View from './View.js';
+import previewView from './previewView.js';
+import icons from 'url:../../img/icons.svg'; // Parcel 2
 
-class ResultsView extends PreviewView {
-  _parentElement = document.querySelector(".search-results .results");
-  _errorMsg = "No recipes found for your query! Please try again ;)";
-  _msg = "";
+class ResultsView extends View {
+  _parentElement = document.querySelector('.results');
+  _errorMessage = 'No recipes found for your query! Please try again ;)';
+  _message = '';
 
   _generateMarkup() {
-    return this._data.map((data) => this._generateMarkupPreview(data)).join("");
+    return this._data.map(result => previewView.render(result, false)).join('');
   }
 }
 

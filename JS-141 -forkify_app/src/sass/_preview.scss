@@ -30,7 +30,7 @@
     backface-visibility: hidden;
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       height: 100%;
       width: 100%;
@@ -55,13 +55,11 @@
   }
 
   &__data {
+    display: grid;
     width: 100%;
-    /* grid-template-columns: 1fr 2rem; */
+    grid-template-columns: 1fr 2rem;
     row-gap: 0.1rem;
-    display: flex;
-    justify-items: flex-start;
     align-items: center;
-    flex-direction: column;
   }
 
   &__title {
@@ -86,13 +84,17 @@
   }
 
   &__user-generated {
+    background-color: darken($color-grey-light-2, 2%);
+
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: darken($color-grey-light-2, 2%);
     height: 2rem;
     width: 2rem;
     border-radius: 10rem;
+
+    margin-left: auto;
+    margin-right: 1.75rem;
 
     svg {
       height: 1.2rem;
