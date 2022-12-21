@@ -1,14 +1,12 @@
-import PreviewView from "./previewView";
+import PreviewView from "./previewView.js";
 
 class BookmarksView extends PreviewView {
   _parentElement = document.querySelector(".bookmarks__list");
-  _errorMsg = "No bookmarks yet. Find a nice recipe and bookmark it ;)";
-  _msg = "";
+  _errorMessage = "No bookmarks yet. Find a nice recipe and bookmark it!";
+  _message = "";
 
   _generateMarkup() {
-    return this._data
-      .map((bookmark) => this._generateMarkupPreview(bookmark))
-      .join("");
+    return this._data.map(this._generateMarkupPreview).join("");
   }
 }
 
