@@ -77,11 +77,18 @@ export const updateServings = function (newServings) {
   state.recipe.servings = newServings;
 };
 
+const persistBookmarks = function () {
+  localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
+};
+
 export const addBookmark = function (recipe) {
   //// add bookmark
   state.bookmarks.push(recipe);
   //// mark current recipe as bookmarked
   if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
+
+  //persist data
+  persistBookmarks();
 };
 
 export const deleteBookmark = function (id) {
@@ -90,7 +97,18 @@ export const deleteBookmark = function (id) {
   state.bookmarks.splice(index, 1);
   //// mark current recipe as NOT bookmarked
   if (state.recipe.id === state.recipe.id) state.recipe.bookmarked = false;
+
+  //remove data
+  persistBookmarks();
 };
+
+const init = function () {
+  const storage = localStorage.getItem("bookmarks");
+  if (storage) state.bookmarks = JSON.parse(storage);
+  console.log(state.bookmarks);
+};
+
+init();
 // f926b802-a866-48a4-9cac-6b9ddeecced4
 // https://forkify-api.herokuapp.com/v2
 // https://forkify-api.herokuapp.com/api/v2/recipes/:id
