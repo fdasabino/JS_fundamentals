@@ -47,9 +47,7 @@ const checkDogs = (dogsJulia, dogsKate) => {
 
   dogs.forEach((dog, index) => {
     if (dog >= 3) {
-      console.log(
-        `Dog number ${index + 1} is an adult, and ${dog} is years old.`
-      );
+      console.log(`Dog number ${index + 1} is an adult, and ${dog} is years old.`);
     } else {
       console.log(`Dog number ${index + 1} is a puppy.`);
     }

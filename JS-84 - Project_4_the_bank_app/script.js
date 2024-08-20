@@ -99,9 +99,7 @@ const formatCur = (value, locale, currency) => {
 const displayMovements = (acc, sort = false) => {
   containerMovements.innerHTML = "";
 
-  const movs = sort
-    ? acc.movements.slice().sort((a, b) => a - b)
-    : acc.movements;
+  const movs = sort ? acc.movements.slice().sort((a, b) => a - b) : acc.movements;
 
   movs.forEach((mov, i) => {
     const type = mov > 0 ? "deposit" : "withdrawal";
@@ -113,9 +111,7 @@ const displayMovements = (acc, sort = false) => {
 
     const html = `
       <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+        <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
         <div class="movements__date">${displayDate}</div>
         <div class="movements__value">${formattedMov}</div>
       </div>
@@ -131,14 +127,10 @@ const calcDisplayBalance = (acc) => {
 };
 
 const calcDisplaySummary = (acc) => {
-  const incomes = acc.movements
-    .filter((mov) => mov > 0)
-    .reduce((acc, mov) => acc + mov, 0);
+  const incomes = acc.movements.filter((mov) => mov > 0).reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = formatCur(incomes, acc.locale, acc.currency);
 
-  const out = acc.movements
-    .filter((mov) => mov < 0)
-    .reduce((acc, mov) => acc + mov, 0);
+  const out = acc.movements.filter((mov) => mov < 0).reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = formatCur(Math.abs(out), acc.locale, acc.currency);
 
   const interest = acc.movements
@@ -207,16 +199,12 @@ btnLogin.addEventListener("click", (e) => {
   // Prevent form from submitting
   e.preventDefault();
 
-  currentAccount = accounts.find(
-    (acc) => acc.username === inputLoginUsername.value
-  );
+  currentAccount = accounts.find((acc) => acc.username === inputLoginUsername.value);
   // console.log(currentAccount);
 
   if (currentAccount?.pin === +inputLoginPin.value) {
     // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
-      currentAccount.owner.split(" ")[0]
-    }`;
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(" ")[0]}`;
     containerApp.style.opacity = 100;
 
     // Create current date and time
@@ -229,10 +217,7 @@ btnLogin.addEventListener("click", (e) => {
       year: "numeric",
     };
 
-    labelDate.textContent = new Intl.DateTimeFormat(
-      currentAccount.locale,
-      options
-    ).format(now);
+    labelDate.textContent = new Intl.DateTimeFormat(currentAccount.locale, options).format(now);
 
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = "";
@@ -254,9 +239,7 @@ btnLogin.addEventListener("click", (e) => {
 btnTransfer.addEventListener("click", (e) => {
   e.preventDefault();
   const amount = +inputTransferAmount.value;
-  const receiverAcc = accounts.find(
-    (acc) => acc.username === inputTransferTo.value
-  );
+  const receiverAcc = accounts.find((acc) => acc.username === inputTransferTo.value);
   inputTransferAmount.value = inputTransferTo.value = "";
 
   if (
@@ -287,10 +270,7 @@ btnLoan.addEventListener("click", (e) => {
 
   const amount = Math.floor(inputLoanAmount.value);
 
-  if (
-    amount > 0 &&
-    currentAccount.movements.some((mov) => mov >= amount * 0.1)
-  ) {
+  if (amount > 0 && currentAccount.movements.some((mov) => mov >= amount * 0.1)) {
     setTimeout(() => {
       // Add movement
       currentAccount.movements.push(amount);
@@ -316,9 +296,7 @@ btnClose.addEventListener("click", (e) => {
     inputCloseUsername.value === currentAccount.username &&
     +inputClosePin.value === currentAccount.pin
   ) {
-    const index = accounts.findIndex(
-      (acc) => acc.username === currentAccount.username
-    );
+    const index = accounts.findIndex((acc) => acc.username === currentAccount.username);
     // console.log(index);
     // .indexOf(23)
 

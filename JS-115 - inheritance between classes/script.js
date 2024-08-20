@@ -47,9 +47,7 @@ class StudentClass extends PersonClass {
   // overwriting the parent method
   calcAge() {
     console.log(
-      `I'm ${
-        2022 - this.birthYear
-      } years old, but as an student I feel more like ${
+      `I'm ${2022 - this.birthYear} years old, but as an student I feel more like ${
         2022 - this.birthYear + 10
       }`
     );

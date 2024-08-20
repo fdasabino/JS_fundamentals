@@ -57,21 +57,13 @@ class ElectricCarClass extends CarClass {
   accelerate() {
     this.speedKm += 20;
     this.#charge--;
-    console.log(
-      `${this.car} is going at ${this.speedKm}km/h with a charge of ${
-        this.#charge
-      }%`
-    );
+    console.log(`${this.car} is going at ${this.speedKm}km/h with a charge of ${this.#charge}%`);
     return this;
   }
 
   brake() {
     this.speedKm -= 5;
-    console.log(
-      `${this.car} is going at ${this.speedKm}km/h with a charge of ${
-        this.#charge
-      }%`
-    );
+    console.log(`${this.car} is going at ${this.speedKm}km/h with a charge of ${this.#charge}%`);
     return this;
   }
 }

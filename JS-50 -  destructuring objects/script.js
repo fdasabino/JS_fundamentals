@@ -47,11 +47,7 @@ const { name, openingHours, categories } = restaurant;
 console.log(name, openingHours, categories);
 
 // * destructuring and give new variable names
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
+const { name: restaurantName, openingHours: hours, categories: tags } = restaurant;
 console.log(restaurantName, hours, tags);
 
 // * destructuring and give new variable names and default values as fallback

@@ -13,9 +13,7 @@ const lotteryPromise = new Promise(function (resolve, reject) {
   }, 2000);
 });
 
-lotteryPromise
-  .then((res) => console.log(res))
-  .catch((err) => console.error(err));
+lotteryPromise.then((res) => console.log(res)).catch((err) => console.error(err));
 
 // Promisified setTimeout
 const wait = function (seconds) {

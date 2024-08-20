@@ -69,9 +69,7 @@ const convertTitleCase = (title) => {
   const titleCase = title
     .toLowerCase()
     .split(" ")
-    .map((word) =>
-      exceptions.includes(word) ? word[0].toUpperCase() + word.slice(1) : word
-    )
+    .map((word) => (exceptions.includes(word) ? word[0].toUpperCase() + word.slice(1) : word))
     .join(" ");
   return titleCase;
 };

@@ -78,9 +78,7 @@ tabsContainer.addEventListener("click", (e) => {
 
   // removing active classes
   tabs.forEach((tab) => tab.classList.remove("operations__tab--active"));
-  tabsContent.forEach((tab) =>
-    tab.classList.remove("operations__content--active")
-  );
+  tabsContent.forEach((tab) => tab.classList.remove("operations__content--active"));
 
   // add active class to tab
   clicked.classList.add("operations__tab--active");
@@ -154,10 +152,7 @@ const revealSectionOptions = {
   threshold: 0.15,
 };
 
-const sectionObserver = new IntersectionObserver(
-  revealSectionCallback,
-  revealSectionOptions
-);
+const sectionObserver = new IntersectionObserver(revealSectionCallback, revealSectionOptions);
 
 allSections.forEach((section) => {
   sectionObserver.observe(section);
@@ -214,9 +209,7 @@ const sliderFunc = () => {
       dot.classList.remove("dots__dot--active");
     });
 
-    document
-      .querySelector(`.dots__dot[data-slide="${slide}"]`)
-      .classList.add("dots__dot--active");
+    document.querySelector(`.dots__dot[data-slide="${slide}"]`).classList.add("dots__dot--active");
   };
 
   const goToSlide = (currentSlide) => {

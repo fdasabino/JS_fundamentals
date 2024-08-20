@@ -50,9 +50,7 @@ ElectricCar.prototype.chargeBattery = function (chargeTo) {
 ElectricCar.prototype.accelerate = function () {
   this.speedKm += 20;
   this.charge--;
-  console.log(
-    `${this.car} is going at ${this.speedKm}km/h with a charge of ${this.charge}%`
-  );
+  console.log(`${this.car} is going at ${this.speedKm}km/h with a charge of ${this.charge}%`);
 };
 
 const tesla = new ElectricCar("Tesla", 120, 23);

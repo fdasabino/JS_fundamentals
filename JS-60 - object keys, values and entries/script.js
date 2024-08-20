@@ -2,15 +2,7 @@
 
 // * Looping Objects: Object Keys, Values, and Entries
 
-const weekdays = [
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-  "sunday",
-];
+const weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
 const openingHours = {
   [weekdays[3]]: {

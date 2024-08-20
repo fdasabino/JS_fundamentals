@@ -53,10 +53,4 @@ acc1.deposit(350);
 acc1.withdraw(150);
 
 // * methods have to be returned (IMPORTANT) to be able to be chained
-acc1
-  .deposit(600)
-  .deposit(5000)
-  .withdraw(200)
-  .withdraw(300)
-  .requestLoan(5000)
-  .getMovements();
+acc1.deposit(600).deposit(5000).withdraw(200).withdraw(300).requestLoan(5000).getMovements();

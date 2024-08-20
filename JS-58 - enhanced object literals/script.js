@@ -37,9 +37,7 @@ const restaurant = {
     );
   },
   orderPasta: (ing1, ing2, ing3) => {
-    console.log(
-      `Here's your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
-    );
+    console.log(`Here's your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
   },
 
   orderPizza: (mainIngredient, ...otherIngredient) => {

@@ -56,18 +56,14 @@ const dogs = [
 ];
 
 // 1.
-dogs.forEach(
-  (dog) => (dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28))
-);
+dogs.forEach((dog) => (dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28)));
 console.log(dogs);
 
 // 2.
 const dogSarah = dogs.find((dog) => dog.owners.includes("Sarah"));
 
 console.log(
-  `Sarah's dog is eating ${
-    dogSarah.curFood > dogSarah.recommendedFood ? "much" : "little"
-  }`
+  `Sarah's dog is eating ${dogSarah.curFood > dogSarah.recommendedFood ? "much" : "little"}`
 );
 
 // 3.
@@ -83,9 +79,9 @@ console.log("L", ownersEatTooLittle);
 
 // 4.
 console.log(
-  `${ownersEatTooMuch.join(
+  `${ownersEatTooMuch.join(" and ")} dogs eat too much and ${ownersEatTooLittle.join(
     " and "
-  )} dogs eat too much and ${ownersEatTooLittle.join(" and ")} eats too little!`
+  )} eats too little!`
 );
 
 // 5.
@@ -93,15 +89,12 @@ console.log(dogs.some((dog) => dog.curFood === dog.recommendedFood));
 
 // 6.
 const checkEatingOkay = (dog) =>
-  dog.curFood > dog.recommendedFood * 0.9 &&
-  dog.curFood < dog.recommendedFood * 1.1;
+  dog.curFood > dog.recommendedFood * 0.9 && dog.curFood < dog.recommendedFood * 1.1;
 console.log(dogs.some(checkEatingOkay));
 
 // 7.
 console.log(dogs.filter(checkEatingOkay));
 
 // 8.
-const dogsSorted = dogs
-  .slice()
-  .sort((a, b) => a.recommendedFood - b.recommendedFood);
+const dogsSorted = dogs.slice().sort((a, b) => a.recommendedFood - b.recommendedFood);
 console.log(dogsSorted);

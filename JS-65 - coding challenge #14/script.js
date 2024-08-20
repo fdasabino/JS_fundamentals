@@ -27,10 +27,7 @@ console.log("(2) Removed yellow card at 64: ", gameEvents);
 
 // * 3.
 const avg = Math.trunc(90 / gameEvents.size);
-console.log(
-  "(3) Calculate avg events: ",
-  `An event happened, on average, every ${avg} minutes`
-);
+console.log("(3) Calculate avg events: ", `An event happened, on average, every ${avg} minutes`);
 
 // * 4.
 console.log("(4) Loop through events and organise order of events: ");

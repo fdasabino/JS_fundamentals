@@ -35,15 +35,11 @@ const poll = {
   registerNewAnswer() {
     // get answer
     const answer = Number(
-      prompt(
-        `${this.question}\n${this.options.join("\n")}\n(Write option number)`
-      )
+      prompt(`${this.question}\n${this.options.join("\n")}\n(Write option number)`)
     );
     console.log(answer);
     // register answer
-    typeof answer === "number" &&
-      answer < this.answers.length &&
-      this.answers[answer]++;
+    typeof answer === "number" && answer < this.answers.length && this.answers[answer]++;
 
     this.displayResults();
     this.displayResults("string");

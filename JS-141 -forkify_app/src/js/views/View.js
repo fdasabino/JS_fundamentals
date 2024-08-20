@@ -14,8 +14,7 @@ export default class View {
    */
 
   render(data, render = true) {
-    if (!data || (Array.isArray(data) && data.length === 0))
-      return this.renderError();
+    if (!data || (Array.isArray(data) && data.length === 0)) return this.renderError();
 
     this._data = data;
     const markup = this._generateMarkup();
@@ -39,19 +38,14 @@ export default class View {
       // console.log(curEl, newEl.isEqualNode(curEl));
 
       // Updates changed TEXT
-      if (
-        !newEl.isEqualNode(curEl) &&
-        newEl.firstChild?.nodeValue.trim() !== ""
-      ) {
+      if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== "") {
         // console.log('💥', newEl.firstChild.nodeValue.trim());
         curEl.textContent = newEl.textContent;
       }
 
       // Updates changed ATTRIBUES
       if (!newEl.isEqualNode(curEl))
-        Array.from(newEl.attributes).forEach((attr) =>
-          curEl.setAttribute(attr.name, attr.value)
-        );
+        Array.from(newEl.attributes).forEach((attr) => curEl.setAttribute(attr.name, attr.value));
     });
   }
 

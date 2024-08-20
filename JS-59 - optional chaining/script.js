@@ -1,15 +1,7 @@
 "use strict";
 
 // * Optional Chaining
-const weekdays = [
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-  "sunday",
-];
+const weekdays = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
 const openingHours = {
   [weekdays[3]]: {
@@ -46,9 +38,7 @@ const restaurant = {
     );
   },
   orderPasta: (ing1, ing2, ing3) => {
-    console.log(
-      `Here's your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
-    );
+    console.log(`Here's your delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
   },
 
   orderPizza: (mainIngredient, ...otherIngredient) => {

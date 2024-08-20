@@ -152,8 +152,7 @@ class App {
     e.preventDefault();
 
     // helper function to check if data is valid
-    const validInputs = (...inputs) =>
-      inputs.every((inp) => Number.isFinite(inp));
+    const validInputs = (...inputs) => inputs.every((inp) => Number.isFinite(inp));
 
     // helper function to check if numbers are positive
     const checkPositives = (...inputs) => inputs.every((inp) => inp > 0);
@@ -184,10 +183,7 @@ class App {
       const elevation = Number(inputElevation.value);
 
       //  check if data is valid
-      if (
-        !validInputs(distance, duration, elevation) ||
-        !checkPositives(distance, duration)
-      ) {
+      if (!validInputs(distance, duration, elevation) || !checkPositives(distance, duration)) {
         return alert("Inputs must be positive numeric values");
       }
       workout = new Cycling([lat, lng], distance, duration, elevation);
@@ -221,9 +217,7 @@ class App {
     L.marker(workout.coords)
       .addTo(this.#map)
       .bindPopup(L.popup(options))
-      .setPopupContent(
-        ` ${workout.type === "running" ? "🏃" : "🚵"} ${workout.description}`
-      )
+      .setPopupContent(` ${workout.type === "running" ? "🏃" : "🚵"} ${workout.description}`)
       .openPopup();
   }
 
@@ -284,9 +278,7 @@ class App {
 
     if (!workoutEl) return;
 
-    const workout = this.#workouts.find(
-      (item) => item.id === workoutEl.dataset.id
-    );
+    const workout = this.#workouts.find((item) => item.id === workoutEl.dataset.id);
 
     this.#map.setView(workout.coords, this.#mapZoomLevel, {
       animate: true,

@@ -32,9 +32,9 @@ const getCountryData = function (country) {
       <h4 class="country__region">${data.region}</h4>
       <h6 class="country__region">${data.subregion}</h6>
         
-        <p class="country__row"><span>👫</span>${(
-          data.population / 1000000
-        ).toFixed(1)} million</p>         
+        <p class="country__row"><span>👫</span>${(data.population / 1000000).toFixed(
+          1
+        )} million</p>         
           <p class="country__row"><span>🗣️</span>${languages[0].name}</p>
           <p class="country__row"><span>💰</span>${currencies[0].name}</p>
           <p class="country__row"><span>🌆</span>${data.capital}</p>

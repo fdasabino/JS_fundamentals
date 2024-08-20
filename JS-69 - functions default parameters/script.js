@@ -3,11 +3,7 @@
 // * Functions Default Parameters
 const bookingsArray = [];
 
-const createBooking = (
-  flightNum,
-  numPassengers = 1,
-  price = 199 * numPassengers
-) => {
+const createBooking = (flightNum, numPassengers = 1, price = 199 * numPassengers) => {
   const booking = {
     flightNum,
     numPassengers,

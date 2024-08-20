@@ -1,8 +1,8 @@
 import View from "./View.js";
 
 // import icons from '../img/icons.svg'; // Parcel 1
-import icons from "url:../../img/icons.svg"; // Parcel 2
 import { Fraction } from "fractional";
+import icons from "url:../../img/icons.svg"; // Parcel 2
 
 class RecipeView extends View {
   _parentElement = document.querySelector(".recipe");
@@ -10,9 +10,7 @@ class RecipeView extends View {
   _message = "";
 
   addHandlerRender(handler) {
-    ["hashchange", "load"].forEach((ev) =>
-      window.addEventListener(ev, handler)
-    );
+    ["hashchange", "load"].forEach((ev) => window.addEventListener(ev, handler));
   }
 
   addHandlerUpdateServings(handler) {
@@ -35,9 +33,7 @@ class RecipeView extends View {
   _generateMarkup() {
     return `
       <figure class="recipe__fig">
-        <img src="${this._data.image}" alt="${
-      this._data.title
-    }" class="recipe__img" />
+        <img src="${this._data.image}" alt="${this._data.title}" class="recipe__img" />
         <h1 class="recipe__title">
           <span>${this._data.title}</span>
         </h1>
@@ -57,9 +53,7 @@ class RecipeView extends View {
           <svg class="recipe__info-icon">
             <use href="${icons}#icon-users"></use>
           </svg>
-          <span class="recipe__info-data recipe__info-data--people">${
-            this._data.servings
-          }</span>
+          <span class="recipe__info-data recipe__info-data--people">${this._data.servings}</span>
           <span class="recipe__info-text">servings</span>
 
           <div class="recipe__info-buttons">
@@ -87,9 +81,7 @@ class RecipeView extends View {
         </div>
         <button class="btn--round btn--bookmark">
           <svg class="">
-            <use href="${icons}#icon-bookmark${
-      this._data.bookmarked ? "-fill" : ""
-    }"></use>
+            <use href="${icons}#icon-bookmark${this._data.bookmarked ? "-fill" : ""}"></use>
           </svg>
         </button>
       </div>
@@ -104,9 +96,7 @@ class RecipeView extends View {
         <h2 class="heading--2">How to cook it</h2>
         <p class="recipe__directions-text">
           This recipe was carefully designed and tested by
-          <span class="recipe__publisher">${
-            this._data.publisher
-          }</span>. Please check out
+          <span class="recipe__publisher">${this._data.publisher}</span>. Please check out
           directions at their website.
         </p>
         <a
