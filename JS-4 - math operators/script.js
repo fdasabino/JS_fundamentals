@@ -15,11 +15,7 @@ const firstName = "Frank";
 const lastName = "Sabino";
 console.log(firstName + " " + lastName);
 
-// string literal
-console.log(
-  `Hello my first name is ${firstName} and my last name ${lastName}, nice to meet you!!!`
-);
-
+// * Assignment operators
 let x = 10 + 5; // 15
 console.log(x);
 
