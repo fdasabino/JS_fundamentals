@@ -3,7 +3,7 @@
 // * 107 - ES6 Classes
 
 // * class expression
-// const PersonClass = class{}
+// > const PersonClass = class{}
 
 // * class declaration
 class PersonClass {
@@ -52,14 +52,13 @@ const walter = new PersonClass("Walter White", 1990);
 walter.greet();
 console.log(walter);
 
-// ? classes allow you to add methods in the following way as well:
+// * classes allow you to add methods in the following way as well:
 // PersonClass.prototype.greet = function () {
 //   console.log(`Hey ${this.fullName}`);
 // };
 
-// 1. classes are not hoisted
+// > 1. classes are not hoisted
 
-// 2. classes are first class citizens
-// (can be passed into functions, and return them from functions)
+// > 2. classes are first class citizens (can be passed into functions, and return them from functions)
 
-// 3. classes are executed in strict mode (even if its not explicitly declared)
+// > 3. classes are executed in strict mode (even if its not explicitly declared)
