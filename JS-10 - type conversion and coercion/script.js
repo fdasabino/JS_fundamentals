@@ -1,6 +1,6 @@
 // * type conversion and coercion
 
-// ? coversion => manually converting a type
+// ? conversion => manually converting a type
 const inputYear = prompt("Enter your age: ");
 console.log(Number(inputYear) + 18);
 
