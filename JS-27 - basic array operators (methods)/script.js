@@ -26,10 +26,10 @@ console.log(friends);
 console.log(shifted);
 
 // ? returns the index number of the element
-console.log(friends.indexOf("Steven"));
+console.log(friends.indexOf("Antonio"));
 
 // ? returns a boolean value
-console.log(friends.includes("Steven"));
+console.log(friends.includes("Antonio"));
 
 if (friends.includes("Steven")) {
   console.log(`You have a friend called Steven`);
